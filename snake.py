@@ -19,7 +19,7 @@ class Snake:
             self.make_snake(position)
 
     def make_snake(self, position):
-        snake_segment = Turtle("square")
+        snake_segment = Turtle("circle")
         snake_segment.color("white")
         snake_segment.penup()
         snake_segment.goto(position)
