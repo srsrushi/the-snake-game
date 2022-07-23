@@ -7,6 +7,7 @@ import time
 snake = Snake()
 food = Food()
 scoreboard = ScoreBoard()
+speed = 0.8
 
 screen = Screen()
 screen.setup(width=600, height=600)
@@ -23,13 +24,17 @@ screen.onkey(snake.move_left, "Left")
 is_game_on = True
 while is_game_on:
     screen.update()
-    time.sleep(0.1)
+    time.sleep(speed)
     snake.move_forward()
 
     # if snake collides with the food
     if snake.head.distance(food) < 15:
         food.refresh()
         snake.grow()
+        if speed < 0.2:
+            speed = speed
+        else:
+            speed -= 0.1
         scoreboard.get_score()
 
     # if snake collides with the walls
